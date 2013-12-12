@@ -40,7 +40,7 @@ public class AddMe {
             more = scanner.nextLine();
             }
              break;
-        case "b":
+        case "b": 
             System.out.println("Please enter the phone Number");
             String phoneSearch = scanner.nextLine();
             int i = 0;
