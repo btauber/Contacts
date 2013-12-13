@@ -19,6 +19,14 @@ public class AddMe {
         newContact.setAddress(address);
         newContact.setPhone(phone);
     }
+    public void printContact(Contacts each){
+        String getOutTheFirstName = each.getFirstName();
+                    String getOutTheLastName = each.getLastName();
+                    String getOutTheAddress = each.getAddress();
+                    String getOutThePhone = each.getPhone();
+                    System.out.println(getOutTheLastName +" " + getOutTheFirstName+newLine+getOutTheAddress+newLine+getOutThePhone);
+                    
+    }
     
     public void myControler(){
         System.out.println("Welcome to my Roledex"+newLine+"To add Contact type a"+newLine+"To look up Contact type b"+newLine+"To edit type c");
@@ -44,14 +52,12 @@ public class AddMe {
             System.out.println("Please enter the phone Number");
             String phoneSearch = scanner.nextLine();
             int i = 0;
+            
             for(Contacts each:myContacts){
                 if(each.getPhone().equalsIgnoreCase(phoneSearch)){
-                    String getOutTheFirstName = each.getFirstName();
-                    String getOutTheLastName = each.getLastName();
-                    String getOutTheAddress = each.getAddress();
-                    String getOutThePhone = each.getPhone();
-                    System.out.println(getOutTheLastName +" " + getOutTheFirstName+newLine+getOutTheAddress+newLine+getOutThePhone);
+                    printContact(each);
                     i++;
+                    break;
                 }
             }
                           if(i!=1){
@@ -59,8 +65,35 @@ public class AddMe {
                           }
                      break;  
         case "c":
+            int p = 0;
             System.out.println("Please enter the phone Number which you whould like to edit");
-    }                 String phoneSearch = scanner.nextLine();
-                        
+                     String thePhoneSearch = scanner.nextLine();
+                        for(Contacts each:myContacts){
+                            if(each.getPhone().equalsIgnoreCase(thePhoneSearch)){
+                                printContact(each);
+                                System.out.println("To edit address type a"+newLine+"To edit phone number type b");
+                                String editItem = scanner.nextLine();
+                                    switch (editItem){
+                                        case "a":
+                                            System.out.println("Enter new Address ");
+                                            String editAddress = scanner.nextLine();
+                                            each.setAddress(editAddress);
+                                            break;
+                                        case "b":
+                                            System.out.println("Enter new Phone number ");
+                                            String editPhone = scanner.nextLine();
+                                            each.setPhone(editPhone);
+                                            break;
+                                    }
+                                                printContact(each);
+                    
+                               p++;
+                            }
+                        }
+                        if(p!=1){
+                              System.out.println("sorry please add his name to the contact list");
+                          }
+                            break;
+    }           
     }
 }
